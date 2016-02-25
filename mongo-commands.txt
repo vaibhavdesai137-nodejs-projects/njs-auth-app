@@ -1,0 +1,33 @@
+
+// start mongo
+mongod --directoryperdb --dbpath /Users/vaidesai/Development/mongodb/data/db/ --logpath /Users/vaidesai/Development/mongodb/log/mongodb.log --logappend -rest
+
+// run mongo shell
+mongo
+
+// create DB
+use njs-user-login-app-db;
+show dbs;
+
+// create collection
+db.createCollection('users');
+show collections;
+
+// add records
+db.users.insert({
+    "name": "Vaibhav Desai",
+    "email": "vaibhavdesai137@gmail.com",
+    "username": "vaibhavdesai137",
+    "password": "vaibhavdesai137"
+    
+});
+
+db.users.insert({
+    "name": "Vishal Desai",
+    "email": "vishaldesai137@gmail.com",
+    "username": "vishaldesai137",
+    "password": "vishaldesai137"
+});
+
+db.users.find();
+db.users.find().pretty();
