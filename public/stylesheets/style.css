@@ -1,3 +1,8 @@
 body {
     margin-top: 50px;
 }
+
+.errors {
+    list-style: none;
+    margin-left: 0;
+}
