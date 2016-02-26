@@ -8,7 +8,7 @@ body {
 }
 
 ul.success li, ul.info li, ul.error li {
-    padding: 20px 0 20px 0;
+    margin: 20px 0 20px 0;
     padding: 15px;
     list-style: none;
     border: 1px solid transparent;
