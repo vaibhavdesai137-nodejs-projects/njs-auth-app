@@ -14,9 +14,9 @@ block content
         .form-group
             label Password
             input.form-control(type='password', name='password')
-        a.btn.btn-default(href='javascript:{}', onclick='document.getElementById("loginForm").submit(); return false;')
+        a.btn.btn-default(href='javascript:login();')
             Login
-        a.btn.btn-default(href='javascript:{}', onclick='window.location.href = "users/register"')
+        a.btn.btn-default(href='javascript:redirectToRegisterPage();')
             New User? Register Here
         
-
+    script(src='/javascripts/app.js')
