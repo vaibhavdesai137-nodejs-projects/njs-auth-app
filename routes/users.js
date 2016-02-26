@@ -92,7 +92,8 @@ router.post('/register', function (req, res, next) {
 // render login page
 router.get('/login', function (req, res, next) {
     res.render('login', {
-        title: 'Login'
+        title: 'Login', 
+        flash: req.flash()
     });
 });
 
@@ -104,8 +105,10 @@ router.post('/login', passport.authenticate('local', {failureRedirect: '/users/l
 });
 
 // logout user
-router.post('/logout', function (req, res, next) {
-    res.send("Not implemented");
+router.get('/logout', function (req, res, next) {
+    req.logout;
+    req.flash('success', 'You have logged out successfully');
+    res.redirect('/users/login');
 });
 
 // Passport Stuff
@@ -132,6 +135,7 @@ passport.use(new LocalStrategy(
                 });
             }
 
+            // check if passwords match
             User.comparePassword(password, user.password, function (err, isMatch) {
                 if (err) throw err;
 
@@ -143,8 +147,6 @@ passport.use(new LocalStrategy(
                     });
                 }
             });
-
-
         });
     }
 ));
