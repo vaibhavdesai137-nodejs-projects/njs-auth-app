@@ -12,7 +12,8 @@ router.get('/', function (req, res, next) {
         console.log(users);
 
         res.render('users', {
-            title: 'Users'
+            title: 'Users',
+            users: users
         });
     });
 });
