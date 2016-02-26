@@ -1,16 +1,27 @@
 extends layout
 
 block content
+    
     h1 Users
-    p Welcome to the users area
-
+    p This is a NodeJS app that demonstrates the login functionality using passport-local
+    br
+    p Even though the passwords are hashed/salted, don't be stupid to actually use one of your genuine passwords
+    br
+    
+    p The system currently has following users:
     div.content
         table.table.table-striped
             thead
                 tr
-                    th Table
-                    th Heading
+                    th Username
+                    th Email
+                    th Full Name
             tbody
-                tr
-                    td Foo Bar
-                    td Foo Bar
+                each user, i in users
+                    tr
+                        td 
+                            #{user.username}
+                        td 
+                            #{user.email}
+                        td 
+                            #{user.fullname}
