@@ -19,15 +19,15 @@ html
                     a.navbar-brand(href='/') NodeJS Auth App
                 #navbar.collapse.navbar-collapse
                     ul.nav.navbar-nav
-                        li(class=(title === 'Members' ? 'active' : ''))
-                            a(href='/') Members
+                        li(class=(title === 'Users' ? 'active' : ''))
+                            a(href='/') Users
                         li(class=(title === 'Register' ? 'active' : ''))
-                            a(href='/members/register') Register
+                            a(href='/users/register') Register
                         li(class=(title === 'Login' ? 'active' : ''))
-                            a(href='/members/login') Login
+                            a(href='/users/login') Login
                     ul.nav.navbar-nav.navbar-right
                         li
-                            a(href='/members/logout') Logout
+                            a(href='/users/logout') Logout
         .container
             block content
 
@@ -41,8 +41,8 @@ html
                     li
                         a.btn.btn-success.links(target='_blank', href='https://github.com/vaibhavdesai137-nodejs-projects/njs-auth-app')
                             i.fa.fa-code.fa-lg
-                                span.social-links  Code
-                    li
+                            span.social-links  Code
+                    li  
                         a.btn.btn-success.links(target='_blank', href='https://github.com/vaibhavdesai137')
                             i.fa.fa-github.fa-lg
                             span.social-links  GitHub
@@ -53,7 +53,7 @@ html
                     li
                         a.btn.btn-success.links(target='_blank', href='https://www.facebook.com/vaibhav.desai.165033')
                             i.fa.fa-facebook.fa-lg
-                                span.social-links  Facebook
+                            span.social-links  Facebook
             .col-lg-6.col-md-12.col-sm-12.col-xs-12
                 p Vaibhav Desai
 

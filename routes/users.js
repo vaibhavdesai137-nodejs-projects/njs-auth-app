@@ -1,10 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var User = require('./../model/User');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
-// get all members
+// get all users
 router.get('/', function (req, res, next) {
-    res.render('index', {
-        title: 'Members'
+
+    User.getAll(function (err, users) {
+        if (err) throw err;
+        console.log(users);
+
+        res.render('users', {
+            title: 'Users'
+        });
     });
 });
 
@@ -15,7 +24,7 @@ router.get('/register', function (req, res, next) {
     });
 });
 
-// register member
+// register user
 router.post('/register', function (req, res, next) {
 
     var fullname = req.body.fullname;
@@ -57,21 +66,21 @@ router.post('/register', function (req, res, next) {
             username: username
         });
     } else {
-        
+
         // create new user in mongo
-        var newuser = new User({
+        var newUser = new User({
             fullname: fullname,
             email: email,
             username: username,
             password: password,
             profileImage: profileImageName
         });
-        
-        User.createUser(newuser, function(err, user) {
+
+        User.create(newUser, function (err, user) {
             if (err) throw err;
             console.log("New user successfully created");
         });
-        
+
         // success msg
         req.flash('success', 'You are now a registered user');
         res.location('/users/login');
@@ -87,14 +96,58 @@ router.get('/login', function (req, res, next) {
     });
 });
 
-// login member
-router.post('/login', function (req, res, next) {
-    res.send("Not implemented");
+// login user
+router.post('/login', passport.authenticate('local', {failureRedirect: '/users/login', failureFlash: 'Invalid username or password'}), function (req, res) {
+    console.log('User authenticated...');
+    req.flash('success', 'You are now logged in');
+    res.redirect('/');
 });
 
-// logout member
+// logout user
 router.post('/logout', function (req, res, next) {
     res.send("Not implemented");
 });
+
+// Passport Stuff
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+    User.getByUserId(id, function (err, user) {
+        done(err, user);
+    });
+});
+
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        User.getByUserName(username, function (err, user) {
+            if (err) throw err;
+
+            // unknown username
+            if (!user) {
+                console.log('Unknown user');
+                return done(null, false, {
+                    message: 'Invalid username or password'
+                });
+            }
+
+            User.comparePassword(password, user.password, function (err, isMatch) {
+                if (err) throw err;
+
+                if (isMatch) {
+                    return done(null, user);
+                } else {
+                    return done(null, false, {
+                        message: 'Invalid username or password'
+                    });
+                }
+            });
+
+
+        });
+    }
+));
+
 
 module.exports = router;

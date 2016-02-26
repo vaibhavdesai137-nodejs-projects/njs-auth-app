@@ -11,7 +11,7 @@ block content
             each error, i in errors
                 li.alert.alert-danger #{error.msg}
             
-    form(method='post', action='/members/register', enctype='multipart/form-data')
+    form(method='post', action='/users/register', enctype='multipart/form-data')
         .form-group
             label Full Name
             input.form-control(type='text', name='fullname', value=fullname)

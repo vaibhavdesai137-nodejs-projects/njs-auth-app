@@ -10,11 +10,11 @@ use njs-auth-app-db;
 show dbs;
 
 // create collection
-db.createCollection('members');
+db.createCollection('users');
 show collections;
 
 // add records
-db.members.insert({
+db.users.insert({
     "name": "John Doe",
     "email": "johndoe@gmail.com",
     "username": "johndoe",
@@ -22,12 +22,12 @@ db.members.insert({
     
 });
 
-db.members.insert({
+db.users.insert({
     "name": "Jane Doe",
     "email": "janedoe@gmail.com",
     "username": "janedoe",
     "password": "janedoe"
 });
 
-db.members.find();
-db.members.find().pretty();
+db.users.find();
+db.users.find().pretty();
