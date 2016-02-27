@@ -75,6 +75,13 @@ app.use(function (req, res, next) {
     next();
 });
 
+// make user session data available in all views
+// doing this avoids passing the user data in all views explictly in render function
+app.get('*', function (req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
+
 app.use('/', index);
 app.use('/users', users);
 

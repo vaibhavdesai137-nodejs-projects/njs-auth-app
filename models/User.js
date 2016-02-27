@@ -1,33 +1,15 @@
 var bcrypt = require('bcryptjs');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var mongoLocalUri = 'mongodb://njs-auth-app-user:njs-auth-app-user@127.0.0.1:27017/njs-auth-app-db';
-var mongoProdUri = 'mongodb://njs-auth-app-user:njs-auth-app-user@ds017678.mlab.com:17678/njs-auth-app-db';
+var config = require('./../config');
 
-/*var MONGO = {
-    username: "njs-auth-app-user",
-    password: "njs-auth-app-user",
-    server: 'ds017678.mlab.com',
-    port: '17678',
-    db: 'njs-auth-app-db',
-    connectionString: function () {
-        return 'mongodb://' + this.username + ':' + this.password + '@' + this.server + ':' + this.port + '/' + this.db;
-    },
-    options: {
-        server: {
-            auto_reconnect: true,
-            socketOptions: {
-                connectTimeoutMS: 30 * 1000,
-                keepAlive: 350 * 1000
-            }
-        }
-    }
-};*/
+var mongoUri = 'mongodb://' + config.dbUser + ':' + config.dbPassword + '@' + config.dbHost + ':' + config.dbPort + '/' + config.dbName;
 
 console.log('Connecting to the db...');
-mongoose.connect(mongoLocalUri, function (err) {
+console.log('mongoUri: ' + mongoUri);
+mongoose.connect(mongoUri, function (err) {
     if (err) throw err;
-    console.log('Connected');
+    console.log('Successfully connected');
 })
 
 // our schema

@@ -6,6 +6,10 @@
 
 # Components
 
+* Express
+* Express Validators
+* Flash Messages
+* Jade Templating
 * MongoDB
 * MongoDB ORM
 * Passport Module

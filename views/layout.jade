@@ -19,15 +19,20 @@ html
                     a.navbar-brand(href='/') NodeJS Auth App
                 #navbar.collapse.navbar-collapse
                     ul.nav.navbar-nav
+                        
                         li(class=(title === 'Users' ? 'active' : ''))
                             a(href='/') Users
-                        li(class=(title === 'Register' ? 'active' : ''))
-                            a(href='/users/register') Register
-                        li(class=(title === 'Login' ? 'active' : ''))
-                            a(href='/users/login') Login
+                            
+                        if !user    
+                            li(class=(title === 'Register' ? 'active' : ''))
+                                a(href='/users/register') Register
+                            li(class=(title === 'Login' ? 'active' : ''))
+                                a(href='/users/login') Login
+                                
                     ul.nav.navbar-nav.navbar-right
-                        li
-                            a(href='/users/logout') Logout
+                        if user
+                            li
+                                a(href='/users/logout') Logout
         .container
             != messages()
             block content
