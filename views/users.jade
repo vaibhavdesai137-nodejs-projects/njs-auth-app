@@ -8,7 +8,7 @@ block content
         p - This is a NodeJS app that demonstrates the login functionality using passport-local
         p - Even though the passwords are hashed/salted, don't be stupid to actually use one of your genuine passwords
         p - The system currently has following users who took the trouble of registering
-        p - Cheers! You guys are awesome.
+        p - Cheers! You guys are awesome
     
     div.content
         table.table.table-striped
@@ -18,11 +18,8 @@ block content
                     th Email
                     th Full Name
             tbody
-                each user, i in users
+                each user in users
                     tr
-                        td 
-                            #{user.username}
-                        td 
-                            #{user.email}
-                        td 
-                            #{user.fullname}
+                        td= user.username
+                        td= user.email
+                        td= user.fullname
