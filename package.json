@@ -13,16 +13,16 @@
         "jade": "~1.11.0",
         "morgan": "~1.6.1",
         "serve-favicon": "~2.3.0",
-        "mongodb": "*",
-        "mongoose": "*",
-        "connect-flash": "*",
-        "express-validator": "*",
-        "express-session": "*",
-        "express-messages": "*",
-        "passport": "*",
-        "passport-local": "*",
-        "passport-http": "*",
-        "multer": "0.1.6",
-        "bcryptjs": "*"
+        "mongodb": "~2.1.7",
+        "mongoose": "~4.4.5",
+        "connect-flash": "~0.1.1",
+        "express-validator": "~2.19.1",
+        "express-session": "~1.13.0",
+        "express-messages": "1.0.0",
+        "passport": "~0.3.2",
+        "passport-local": "~1.0.0",
+        "passport-http": "~0.3.0",
+        "multer": "~0.1.6",
+        "bcryptjs": "~2.3.0"
     }
 }

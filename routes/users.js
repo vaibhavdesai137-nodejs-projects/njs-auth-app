@@ -8,8 +8,7 @@ var LocalStrategy = require('passport-local').Strategy;
 router.get('/', ensureAuthenticated, function (req, res, next) {
     User.getAll(function (err, users) {
         if (err) throw err;
-        console.log(users);
-
+        
         res.render('users', {
             title: 'Users',
             users: users

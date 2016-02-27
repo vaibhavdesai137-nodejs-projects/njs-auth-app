@@ -20,6 +20,6 @@ var currentEnv = "heroku";
 myconfig = configs[currentEnv];
 
 console.log('Current env: ' + currentEnv);
-console.log('Configs are: ' + myconfig);
+console.log('Configs are: ' + JSON.stringify(myconfig, null, 2));
 
 module.exports = myconfig;
