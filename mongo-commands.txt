@@ -1,13 +1,23 @@
 
 // start mongo
-mongod --directoryperdb --dbpath /Users/vaidesai/Development/mongodb/data/db/ --logpath /Users/vaidesai/Development/mongodb/log/mongodb.log --logappend -rest
+sudo ./mongod --directoryperdb --dbpath /Users/vaidesai/Development/mongodb/data/db/ --logpath /Users/vaidesai/Development/mongodb/log/mongodb.log --logappend -rest
 
 // run mongo shell
-mongo
+./mongo
 
 // create DB
 use njs-auth-app-db;
 show dbs;
+
+// create users
+db.createUser({
+    user: "njs-auth-app-user",
+    pwd: "njs-auth-app-user",
+    roles: [{
+        role: "readWrite", 
+        db: "njs-auth-app-db" 
+    }]
+});
 
 // create collection
 db.createCollection('users');
@@ -15,7 +25,7 @@ show collections;
 
 // add records
 db.users.insert({
-    "name": "John Doe",
+    "fullname": "John Doe",
     "email": "johndoe@gmail.com",
     "username": "johndoe",
     "password": "johndoe"
@@ -23,7 +33,7 @@ db.users.insert({
 });
 
 db.users.insert({
-    "name": "Jane Doe",
+    "fullname": "Jane Doe",
     "email": "janedoe@gmail.com",
     "username": "janedoe",
     "password": "janedoe"

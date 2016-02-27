@@ -46,11 +46,6 @@ footer i {
     vertical-align: middle;
 }
 
-footer .links {
-    min-width: 140px;
-    max-width: 140px;
-}
-
 /* For all other sizes except desktop */
 @media (max-width: 1199px) {
 

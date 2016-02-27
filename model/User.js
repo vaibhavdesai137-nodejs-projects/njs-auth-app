@@ -1,9 +1,10 @@
 var bcrypt = require('bcryptjs');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-var mongoUri = 'mongodb://njs-auth-app-user:njs-auth-app-user@ds017678.mlab.com:17678/njs-auth-app-db';
+var mongoLocalUri = 'mongodb://njs-auth-app-user:njs-auth-app-user@127.0.0.1:27017/njs-auth-app-db';
+var mongoProdUri = 'mongodb://njs-auth-app-user:njs-auth-app-user@ds017678.mlab.com:17678/njs-auth-app-db';
 
-var MONGO = {
+/*var MONGO = {
     username: "njs-auth-app-user",
     password: "njs-auth-app-user",
     server: 'ds017678.mlab.com',
@@ -21,20 +22,13 @@ var MONGO = {
             }
         }
     }
-};
+};*/
 
-console.log('Connecting to mongodb...');
-var db = mongoose.createConnection(MONGO.connectionString(), MONGO.options);
-
-db.on('error', function (err) {
-    console.log("DB connection error: " + err);
-});
-db.on('open', function () {
-    console.log("DB connected");
-});
-db.on('close', function (str) {
-    console.log("DB disconnected: " + str);
-});
+console.log('Connecting to the db...');
+mongoose.connect(mongoLocalUri, function (err) {
+    if (err) throw err;
+    console.log('Connected');
+})
 
 // our schema
 var userSchema = new mongoose.Schema({
@@ -51,7 +45,7 @@ var userSchema = new mongoose.Schema({
     profileimage: String
 });
 
-var User = module.exports = db.model('User', userSchema);
+var User = module.exports = mongoose.model('User', userSchema);
 
 User.create = function (newUser, callback) {
     var hash = bcrypt.hashSync(newUser.password, 8);

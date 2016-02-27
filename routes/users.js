@@ -6,7 +6,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 // get all users
 router.get('/', function (req, res, next) {
-
     User.getAll(function (err, users) {
         if (err) throw err;
         console.log(users);
@@ -93,16 +92,14 @@ router.post('/register', function (req, res, next) {
 // render login page
 router.get('/login', function (req, res, next) {
     res.render('login', {
-        title: 'Login', 
-        flash: req.flash()
+        title: 'Login'
     });
 });
 
 // login user
-router.post('/login', passport.authenticate('local', {successRedirect : '/users', failureRedirect: '/users/login', failureFlash: true}), function (req, res) {
+router.post('/login', passport.authenticate('local', {successRedirect : '/users', failureRedirect: '/users/login', failureFlash: 'Invalid Username or Password', successFlash: 'You are now logged in'}), function (req, res) {
     console.log('User authenticated...');
-    req.flash('success', 'You are now logged in');
-    res.redirect('/');
+    res.redirect('/users');
 });
 
 // logout user
