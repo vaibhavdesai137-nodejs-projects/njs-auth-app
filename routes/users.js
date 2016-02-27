@@ -99,7 +99,7 @@ router.get('/login', function (req, res, next) {
 });
 
 // login user
-router.post('/login', passport.authenticate('local', {failureRedirect: '/users/login', failureFlash: 'Invalid username or password'}), function (req, res) {
+router.post('/login', passport.authenticate('local', {successRedirect : '/users/members', failureRedirect: '/users/login', failureFlash: true}), function (req, res) {
     console.log('User authenticated...');
     req.flash('success', 'You are now logged in');
     res.redirect('/');
