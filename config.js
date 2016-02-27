@@ -3,15 +3,15 @@ var configs = {
         dbHost: "127.0.0.1",
         dbPort: 27017,
         dbName: "njs-auth-app-db",
-        dbUser: "njs-auth-app-user",
-        dbPassword: "njs-auth-app-user"
+        dbUser: "dbuser",
+        dbPassword: "dbpassword"
     },
     heroku: {
         dbHost: "ds017678.mlab.com",
         dbPort: "17678",
         dbName: "njs-auth-app-db",
-        dbUser: "njs-auth-app-user",
-        dbPassword: "njs-auth-app-user"
+        dbUser: "dbuser",
+        dbPassword: "dbpassword"
     }
 }
 

@@ -11,8 +11,8 @@ show dbs;
 
 // create users
 db.createUser({
-    user: "njs-auth-app-user",
-    pwd: "njs-auth-app-user",
+    user: "dbuser",
+    pwd: "dbpassword",
     roles: [{
         role: "readWrite", 
         db: "njs-auth-app-db" 
