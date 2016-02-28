@@ -1,13 +1,5 @@
 body {
     margin-top: 50px;
-    background-color: red;
-}
-
-.navbar-brand,
-.navbar-nav li a {
-    line-height: 150px;
-    height: 300px;
-    padding-top: 0;
 }
 
 .errors {
@@ -15,7 +7,9 @@ body {
     margin-left: 0;
 }
 
-ul.success li, ul.info li, ul.error li {
+ul.success li,
+ul.info li,
+ul.error li {
     margin: 20px 0 20px 0;
     padding: 15px;
     list-style: none;
